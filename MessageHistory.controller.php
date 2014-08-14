@@ -122,7 +122,7 @@ class MessageHistory_Controller extends Action_Controller
 	{
 		$this->msg = isset($_REQUEST['msg']) ? (int) $_REQUEST['msg'] : 0;
 		$start = isset($_REQUEST['start']) ? (int) $_REQUEST['start'] : 0;
-		$sort = isset($_REQUEST['sort']) && in_array($_REQUEST['sort'], array('up', 'down')) ? $_REQUEST['sort'] : 'up';
+		$sort = isset($_REQUEST['sort']) ? $_REQUEST['sort'] : '';
 
 		return array(
 			'msgs' => $this->list_getHistory($start, 10, $sort),
