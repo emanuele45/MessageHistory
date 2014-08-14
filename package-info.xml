@@ -17,10 +17,14 @@
 	<type>modification</type>
 	<install for="1.0 RC 3 - 1.0.99">
 		<require-file name="MessageHistory.class.php" destination="SUBSDIR" />
+		<require-file name="MessageHistory.controller.php" destination="CONTROLLERDIR" />
+		<require-file name="MessageHistory.english.php" destination="LANGUAGEDIR/english" />
 		<database>install.php</database>
 	</install>
 	<uninstall for="1.0 RC 3 - 1.0.99">
 		<remove-file name="SUBSDIR/MessageHistory.class.php" />
+		<remove-file name="CONTROLLERDIR/MessageHistory.controller.php" />
+		<remove-file name="LANGUAGEDIR/english/MessageHistory.english.php" />
 		<code>install.php</code>
 	</uninstall>
 </package-info>
