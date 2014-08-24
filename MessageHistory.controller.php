@@ -11,13 +11,14 @@
 
 class MessageHistory_Controller extends Action_Controller
 {
-	private function __get($name)
+	public function __get($name)
 	{
 		if ($name === 'history')
 		{
 			$db = database();
-			
+
 			$this->history = new MessageHistory($db, $this->msg);
+			return $this->history;
 		}
 	}
 
@@ -110,6 +111,7 @@ class MessageHistory_Controller extends Action_Controller
 		{
 			loadTemplate('Json');
 			$context['json_data'] = $history;
+			$context['sub_template'] = 'send_json';
 		}
 		else
 		{
@@ -130,19 +132,19 @@ class MessageHistory_Controller extends Action_Controller
 		);
 	}
 
-	private function list_getHistory($start, $per_page, $sort)
+	public function list_getHistory($start, $per_page, $sort)
 	{
 		$data = $this->history->msgHistory($start, $per_page, $sort);
 
-		foreach ($data as $key => $val)
-		{
-			$data[$key]['body_short'] = Util::shorten_text($val['body'], 250, true);
-		}
-
+// 		foreach ($data as $key => $val)
+// 		{
+// 			$data[$key]['body_short'] = Util::shorten_text($val['body'], 250, true);
+// 		}
+// 
 		return $data;
 	}
 
-	private function list_getHistoryCount()
+	public function list_getHistoryCount()
 	{
 		return $this->history->countMsgHistory();
 	}
