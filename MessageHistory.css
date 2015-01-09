@@ -46,7 +46,7 @@
 	width: 100%;
 	display: block;
 }
-.messagehistory_container .message::after {
+.messagehistory_container .message:after {
 	content: '';
 	display: block;
 	clear: both;

@@ -18,9 +18,7 @@ function template_messages_history_above()
 function template_messages_history_below()
 {
 	echo '
-		<div class="messagehistory_back" ng-click="history.hide()" ng-show="history.isVisible()">
-		</div>
-		<div class="messagehistory_container" ng-show="history.isVisible()">
+		<div id="messagehistory_container" class="messagehistory_container" ng-show="history.isVisible()">
 			<ul>
 				<li class="message" ng-repeat="message in history.msgs">
 				<span class="modifier">

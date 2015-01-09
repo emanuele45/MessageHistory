@@ -158,6 +158,8 @@ class MessageHistory
 			$row['body'] = censorText($row['body']);
 			$row['body'] = parse_bbc($row['body']);
 			$row['avatar'] = determineAvatar($row);
+			unset($row['email_address']);
+
 			$msgs[] = $row;
 		}
 		$this->db->free_result($request);

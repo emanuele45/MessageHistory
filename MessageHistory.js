@@ -10,11 +10,31 @@
 (function(){
 	var app = angular.module('messagehistory', []);
 
-	app.controller('MessageHistory', ['$http', '$sce', function($http, $sce) {
+	app.controller('MessageHistory', ['$http', '$sce', '$scope', '$document', function($http, $sce, $scope, $document) {
+		var element = $(document.getElementById('messagehistory_container'));
 		var history = this;
+		var clicked = false;
 		history.msg = 0;
 		history.msgs = {};
 		history.show = false;
+
+		/**
+		 * This makes possible to click on any place of the page outside the
+		 * controller and close the messages container
+		 */
+		$document.bind('click', function(event) {
+			var isClickedElementChildOfPopup = element.find(event.target).length > 0;
+
+			if (isClickedElementChildOfPopup || clicked)
+			{
+				if (clicked)
+					clicked = false;
+				return;
+			}
+
+			history.hide();
+			$scope.$apply();
+		});
 
 		/**
 		 * Function that fetches the previous versions of the message from the server
