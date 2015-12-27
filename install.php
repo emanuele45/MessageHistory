@@ -12,8 +12,18 @@ global $hooks, $mod_name;
 $hooks = array(
 	array(
 		'integrate_before_modify_post',
-		'MessageHistoryHooks::before_modify_post',
-		'SUBSDIR/MessageHistory.class.php',
+		'Message_History_Integrate::before_modify_post',
+		'SOURCEDIR/MessageHistory.integrate.php',
+	),
+	array(
+		'integrate_display_message_list',
+		'Message_History_Integrate::display_message_list',
+		'SOURCEDIR/MessageHistory.integrate.php',
+	),
+	array(
+		'integrate_prepare_display_context',
+		'Message_History_Integrate::prepare_display_context',
+		'SOURCEDIR/MessageHistory.integrate.php',
 	),
 );
 $mod_name = 'Message History';
